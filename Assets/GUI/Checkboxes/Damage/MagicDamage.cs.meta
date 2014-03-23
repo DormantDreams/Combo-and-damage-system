@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 886c34c09af628e43a5faa6a14d2851d
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - activeIcon: {fileID: 2800000, guid: c3303938c05587e479e55b8c039d9d15, type: 3}
+  - disabledIcon: {fileID: 2800000, guid: bb479724569ad0d4e977d8444d6b7ae5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
