@@ -11,7 +11,7 @@ public class HorizontalSlider : MonoBehaviour
 	
 	[SerializeField]
 	protected Vector2 position;
-	protected Vector2 margin =new Vector2(10, 5);
+	protected Vector2 margin = new Vector2(10, 5);
 	protected int sliderSize = 300;
 	protected Vector2 boxSize = new Vector2(40,20);
 	[SerializeField]

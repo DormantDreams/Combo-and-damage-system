@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FireDamage : IconCheckbox
 {
-		FireDamage(){
+		public FireDamage(){
 			position = new Vector2(10,70);
 			checkboxName = "Fire Damage";
 		}

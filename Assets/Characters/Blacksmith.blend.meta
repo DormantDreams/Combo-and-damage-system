@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: f75fa40ccd073c943a6b2ee82e432dd7
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Arm_lower_L
+    100002: Arm_lower_R
+    100004: Arm_upper_L
+    100006: Arm_upper_R
+    100008: Armature
+    100010: //RootNode
+    100012: Bone
+    100014: Chest
+    100016: Cylinder
+    100018: Foot_L
+    100020: Foot_R
+    100022: Hand_L
+    100024: Hand_R
+    100026: Head
+    100028: Hips
+    100030: Leg_IK_L
+    100032: Leg_IK_R
+    100034: Leg_lower_L
+    100036: Leg_lower_R
+    100038: Leg_upper_L
+    100040: Leg_upper_R
+    100042: Movement__Circrle
+    100044: Neck
+    100046: Pole_Sphere
+    100048: Shoulder_L
+    100050: Shoulder_R
+    100052: Spine
+    100054: Locomotion
+    400000: Arm_lower_L
+    400002: Arm_lower_R
+    400004: Arm_upper_L
+    400006: Arm_upper_R
+    400008: Armature
+    400010: //RootNode
+    400012: Bone
+    400014: Chest
+    400016: Cylinder
+    400018: Foot_L
+    400020: Foot_R
+    400022: Hand_L
+    400024: Hand_R
+    400026: Head
+    400028: Hips
+    400030: Leg_IK_L
+    400032: Leg_IK_R
+    400034: Leg_lower_L
+    400036: Leg_lower_R
+    400038: Leg_upper_L
+    400040: Leg_upper_R
+    400042: Movement__Circrle
+    400044: Neck
+    400046: Pole_Sphere
+    400048: Shoulder_L
+    400050: Shoulder_R
+    400052: Spine
+    400054: Locomotion
+    2300000: Movement__Circrle
+    2300002: Pole_Sphere
+    3300000: Movement__Circrle
+    3300002: Pole_Sphere
+    4300000: Cylinder
+    4300002: Pole_Sphere
+    4300004: Movement__Circrle
+    7400000: Hit1
+    7400002: BlacksmithIdle
+    7400004: BattleStand
+    7400006: ArmatureAction0
+    9500000: //RootNode
+    13700000: Cylinder
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Hit1
+      takeName: Default Take
+      firstFrame: 50
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Locomotion
+        weight: 1
+      - path: Armature/Locomotion/Hips
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L/Foot_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R/Foot_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L/Hand_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R/Hand_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Movement__Circrle
+        weight: 1
+      - path: Pole_Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: BlacksmithIdle
+      takeName: ArmatureAction
+      firstFrame: 1
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Locomotion
+        weight: 1
+      - path: Armature/Locomotion/Hips
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L/Foot_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R/Foot_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L/Hand_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R/Hand_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Movement__Circrle
+        weight: 1
+      - path: Pole_Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 

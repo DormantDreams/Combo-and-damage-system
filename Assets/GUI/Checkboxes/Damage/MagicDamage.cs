@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MagicDamage : IconCheckbox	
 {
-		MagicDamage(){
+		public MagicDamage(){
 			position = new Vector2(220,70);
 			checkboxName = "Magic Damage";
 		}

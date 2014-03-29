@@ -3,7 +3,7 @@ using System.Collections;
 
 public class IceDamage : IconCheckbox
 {
-		IceDamage(){
+		public IceDamage(){
 			position = new Vector2(80,70);
 			checkboxName = "Ice Damage";
 		}
