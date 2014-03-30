@@ -3,11 +3,37 @@ using System.Collections;
 
 public class WeaponScript : MonoBehaviour {
 
-	public float PhysicalDmg = 30;
-	public int FireDmg = 15;
-	public int IceDmg = 65;
-	public int ElectricDmg = 10;
-	public int MagicDmg = 110;
+	[SerializeField]
+	private float physicalDmg;
+	[SerializeField]
+	private float fireDmg;
+	[SerializeField]
+	private float iceDmg;
+	[SerializeField]
+	private float electricDmg;
+	[SerializeField]
+	private float magicDmg;
+
+	public float PhysicalDmg {
+		get{return physicalDmg;} 
+		set{physicalDmg=value;}
+	}
+	public float FireDmg {
+		get{return (dealsFireDmg) ? fireDmg : 0;}
+		set{fireDmg = value;}
+	}
+	public float IceDmg {
+		get{return (dealsIceDmg) ? iceDmg : 0;}
+		set{iceDmg = value;}
+	}
+	public float ElectricDmg {
+		get{return (dealsElectricDmg) ? electricDmg : 0;}
+		set{electricDmg = value;}
+	}
+	public float MagicDmg {
+		get{return (dealsMagicDmg) ? magicDmg : 0;}
+		set{magicDmg = value;}
+	}
 
 	#region GUI Area
 		
@@ -119,41 +145,40 @@ public class WeaponScript : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		//Work only on enemies!
 		if(other.tag.Equals("Enemy")){
-			//CalculateDamage accoding to one of the rules
 			BasicStatistics enemy;
 			enemy = other.GetComponent<BasicStatistics>();
 			enemy.HP -= CalculateDamage(enemy,transform.root.GetComponent<BasicStatistics>());
-			//Debug.Log("Enemy's HP: " + enemy.HP);
 		}
 	}
 
 	private int CalculateDamage(BasicStatistics enemy,BasicStatistics owner){
 		int TotalDamage = 0;
+		//CalculateDamage accoding to one of the rules
 		switch(GameObject.Find("GUI").GetComponent<Toolbars>().DamageSystem){
-		case 0:{
-			TotalDamage += (int) ((1 - enemy.PhysicalResistance) * owner.ATT / enemy.DEF * PhysicalDmg);
-			TotalDamage += (int) ((1 - enemy.FireResistance) * owner.ATT / enemy.DEF * FireDmg);
-			TotalDamage += (int) ((1 - enemy.IceResistance) * owner.ATT / enemy.DEF * IceDmg);
-			TotalDamage += (int) ((1 - enemy.ElectricResistance) * owner.ATT / enemy.DEF * ElectricDmg);
-			TotalDamage += (int) ((1 - enemy.MagicResistance) * owner.ATT / enemy.DEF * MagicDmg);
-			break;	
-		}
-		case 1:{
-			TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance + owner.ATT)) * PhysicalDmg);
-			TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance + owner.ATT) )* FireDmg);
-			TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance + owner.ATT))* IceDmg);
-			TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance + owner.ATT)) * ElectricDmg);
-			TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance + owner.ATT)) * MagicDmg);
-			break;
-		}
-		case 2:{
-			TotalDamage += (int)((1 - enemy.PhysicalResistance) * owner.ATT / enemy.DEF * PhysicalDmg);
-			TotalDamage += (int)((1 - enemy.FireResistance) *  FireDmg);
-			TotalDamage += (int)((1 - enemy.IceResistance) * IceDmg);
-			TotalDamage += (int)((1 - enemy.ElectricResistance) *  ElectricDmg);
-			TotalDamage += (int)((1 - enemy.MagicResistance) * MagicDmg);
-			break;	
-		}
+			case 0:{
+				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT / enemy.DEF) * PhysicalDmg);
+				TotalDamage += (int) ((1 - enemy.FireResistance) * (owner.ATT / enemy.DEF) * FireDmg);
+				TotalDamage += (int) ((1 - enemy.IceResistance) * (owner.ATT / enemy.DEF) * IceDmg);
+				TotalDamage += (int) ((1 - enemy.ElectricResistance) * owner.ATT / enemy.DEF * ElectricDmg);
+				TotalDamage += (int) ((1 - enemy.MagicResistance) * owner.ATT / enemy.DEF * MagicDmg);
+				break;	
+			}
+			case 1:{
+				TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance - owner.ATT)/100) * PhysicalDmg);
+				TotalDamage += (int)((1 - (enemy.DEF + enemy.FireResistance - owner.ATT)/100) * FireDmg);
+				TotalDamage += (int)((1 - (enemy.DEF + enemy.IceResistance - owner.ATT)/100) * IceDmg);
+				TotalDamage += (int)((1 - (enemy.DEF + enemy.ElectricResistance - owner.ATT)/100) * ElectricDmg);
+				TotalDamage += (int)((1 - (enemy.DEF + enemy.MagicResistance - owner.ATT)/100) * MagicDmg);
+				break;
+			}
+			case 2:{
+				TotalDamage += (int)((1 - enemy.PhysicalResistance) * owner.ATT / enemy.DEF * PhysicalDmg);
+				TotalDamage += (int)((1 - enemy.FireResistance) *  FireDmg);
+				TotalDamage += (int)((1 - enemy.IceResistance) * IceDmg);
+				TotalDamage += (int)((1 - enemy.ElectricResistance) *  ElectricDmg);
+				TotalDamage += (int)((1 - enemy.MagicResistance) * MagicDmg);
+				break;	
+			}
 		}
 		Debug.Log("Dealt damage = " + TotalDamage);
 		return TotalDamage;

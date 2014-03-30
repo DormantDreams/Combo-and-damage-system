@@ -4,8 +4,21 @@ using System.Collections;
 public class EnemyScript : MonoBehaviour {
 
 	[SerializeField]
-	private Vector2 margin = new Vector2(10,100);
-	private Vector2 boxSize = new Vector2(100,30);
+	private Vector2 HPmargin = new Vector2(10,100);
+	private Vector2 HPboxSize = new Vector2(100,30);
+
+	#region GUI
+	private string sliderText = "DEF";
+	private int sliderArea = 25;
+	protected Vector2 position = new Vector2(10,10);
+	protected Vector2 margin = new Vector2(10, 5);
+	protected int sliderSize = 300;
+	protected Vector2 boxSize = new Vector2(40,20);
+	[SerializeField]
+	protected int minimumValue = 1;
+	[SerializeField]
+	protected int maximumValue = 50;
+	#endregion
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +31,11 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.Box(new Rect(Screen.width - boxSize.x - margin.x, Screen.height - margin.y,boxSize.x,boxSize.y),("HP =" + GetComponent<BasicStatistics>().HP.ToString()));
+		BasicStatistics stats = GetComponent<BasicStatistics>();
+		GUI.Label(new Rect(Screen.width - 2*position.x - sliderSize - 2*boxSize.x,position.y,boxSize.x,boxSize.y),sliderText);
+		stats.DEF = (int)GUI.HorizontalSlider(new Rect(Screen.width - 2*position.x - sliderSize - boxSize.x,position.y+margin.y,sliderSize,sliderArea),stats.DEF,minimumValue,maximumValue);
+		GUI.Box(new Rect(Screen.width - position.x - boxSize.x,position.y,boxSize.x,boxSize.y),stats.DEF.ToString());
+		GUI.Box(new Rect(Screen.width - HPboxSize.x - HPmargin.x, Screen.height - HPmargin.y,HPboxSize.x,HPboxSize.y),("HP =" + stats.HP.ToString()));
 	}
 
 }

@@ -21,8 +21,8 @@ public class MinionButton : MonoBehaviour {
 
 	void OnGUI(){
 		if(GUI.Button(new Rect(Screen.width - position.x - size.x, Screen.height - position.y - size.y, size.x, size.y),"RELEASE \n THE \n MINION!")){
-			GameObject.Destroy(GameObject.FindGameObjectWithTag("Minion"));
-			GameObject minion = (GameObject)Instantiate(Minion, new Vector3(3, 0.15f, 0), Quaternion.identity);			
+			GameObject.Destroy(GameObject.FindWithTag("Enemy"));
+			GameObject minion = (GameObject)Instantiate(Minion, new Vector3(1, 0.15f, 0.9f), Quaternion.identity);			
 			minion.transform.rotation = Quaternion.Euler(0,270,0);
 		}
 

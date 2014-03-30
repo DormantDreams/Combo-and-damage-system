@@ -3,12 +3,22 @@ using System.Collections;
 [SerializeField]
 public class BasicStatistics : MonoBehaviour{
 	[SerializeField]
-	private int hp;
-	public int HP {
+	private float hp;
+	public float HP {
 		get{ return hp; } 
-		set{ hp=value; }
+		set{
+			if (CompareTag("Enemy") && (value < hp)){
+				if (value < 0){
+					GetComponent<Animator>().SetTrigger("Dead");
+					GetComponent<BoxCollider>().enabled = false;
+				}
+				else
+					GetComponent<Animator>().SetTrigger("RecievingDamage");
+			}
+			hp=value; 
+		}
 	}
-	public int ATT, DEF, PhysicalResistance, FireResistance, IceResistance;
-	public int ElectricResistance;
-	public int MagicResistance;
+	public float ATT, DEF, PhysicalResistance, FireResistance, IceResistance;
+	public float ElectricResistance;
+	public float MagicResistance;
 }

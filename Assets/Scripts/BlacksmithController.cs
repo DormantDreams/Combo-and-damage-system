@@ -13,6 +13,19 @@ public class BlacksmithController : MonoBehaviour {
 		}
 	}
 
+
+	#region GUI
+	private string sliderText = "ATT";
+	private int sliderArea = 25;
+	protected Vector2 position = new Vector2(10,10);
+	protected Vector2 margin = new Vector2(10, 5);
+	protected int sliderSize = 300;
+	protected Vector2 boxSize = new Vector2(40,20);
+	[SerializeField]
+	protected int minimumValue = 1;
+	[SerializeField]
+	protected int maximumValue = 30;
+	#endregion
 	// Use this for initialization
 	void Start () {
 	
@@ -24,5 +37,12 @@ public class BlacksmithController : MonoBehaviour {
 			HitCounter = 1;
 		else
 			HitCounter = 0;
+	}
+
+	void OnGUI(){
+		BasicStatistics stats = GetComponent<BasicStatistics>();
+		GUI.Label(new Rect(position.x,position.y,boxSize.x,boxSize.y),sliderText);
+		stats.ATT = (int)GUI.HorizontalSlider(new Rect(position.x+boxSize.x,position.y+margin.y,sliderSize,sliderArea),stats.ATT,minimumValue,maximumValue);
+		GUI.Box(new Rect(position.x+boxSize.x+margin.x+sliderSize,position.y,boxSize.x,boxSize.y),stats.ATT.ToString());
 	}
 }
