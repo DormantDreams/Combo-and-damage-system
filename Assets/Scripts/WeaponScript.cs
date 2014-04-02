@@ -146,8 +146,12 @@ public class WeaponScript : MonoBehaviour {
 		//Work only on enemies!
 		if(other.tag.Equals("Enemy")){
 			BasicStatistics enemy;
+			var owner = transform.root;
 			enemy = other.GetComponent<BasicStatistics>();
-			enemy.HP -= CalculateDamage(enemy,transform.root.GetComponent<BasicStatistics>());
+			float comboRatio = (owner.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Combo")) ? owner.GetComponent<BasicStatistics>().ComboRatio : 1;
+
+			Debug.Log("Dealt damage = " + (comboRatio * CalculateDamage(enemy,owner.GetComponent<BasicStatistics>())));
+			enemy.HP -= comboRatio * CalculateDamage(enemy,owner.GetComponent<BasicStatistics>());
 		}
 	}
 
@@ -156,7 +160,7 @@ public class WeaponScript : MonoBehaviour {
 		//CalculateDamage accoding to one of the rules
 		switch(GameObject.Find("GUI").GetComponent<Toolbars>().DamageSystem){
 			case 0:{
-				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT / enemy.DEF) * PhysicalDmg);
+				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT+10) / (enemy.DEF+10) * PhysicalDmg);
 				TotalDamage += (int) ((1 - enemy.FireResistance) * (owner.ATT / enemy.DEF) * FireDmg);
 				TotalDamage += (int) ((1 - enemy.IceResistance) * (owner.ATT / enemy.DEF) * IceDmg);
 				TotalDamage += (int) ((1 - enemy.ElectricResistance) * owner.ATT / enemy.DEF * ElectricDmg);
@@ -180,7 +184,6 @@ public class WeaponScript : MonoBehaviour {
 				break;	
 			}
 		}
-		Debug.Log("Dealt damage = " + TotalDamage);
 		return TotalDamage;
 	}
 

@@ -8,7 +8,7 @@ public class BlacksmithController : MonoBehaviour {
 			return hitCounter;
 		} 
 		set{
-			GetComponent<Animator>().SetInteger("HitCounter",value);
+			GetComponent<Animator>().SetTrigger("AttackTrigger");
 			hitCounter = value;
 		}
 	}
@@ -33,10 +33,9 @@ public class BlacksmithController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButton("Fire1"))
-			HitCounter = 1;
-		else
-			HitCounter = 0;
+		if(Input.GetKey(KeyCode.LeftControl))
+			//if(GetComponent<Animator>().
+			HitCounter++;
 	}
 
 	void OnGUI(){

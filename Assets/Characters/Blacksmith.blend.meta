@@ -70,6 +70,7 @@ ModelImporter:
     7400002: BlacksmithIdle
     7400004: BattleStand
     7400006: ArmatureAction0
+    7400008: Combo
     9500000: //RootNode
     13700000: Cylinder
   materials:
@@ -177,6 +178,82 @@ ModelImporter:
       loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Locomotion
+        weight: 1
+      - path: Armature/Locomotion/Hips
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_L/Leg_lower_L/Foot_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Leg_upper_R/Leg_lower_R/Foot_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Neck/Head
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_L/Arm_upper_L/Arm_lower_L/Hand_L
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R
+        weight: 1
+      - path: Armature/Locomotion/Hips/Spine/Chest/Shoulder_R/Arm_upper_R/Arm_lower_R/Hand_R
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Movement__Circrle
+        weight: 1
+      - path: Pole_Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Combo
+      takeName: Default Take
+      firstFrame: 95
+      lastFrame: 129
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1

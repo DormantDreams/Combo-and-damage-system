@@ -18,7 +18,8 @@ public class BasicStatistics : MonoBehaviour{
 			hp=value; 
 		}
 	}
-	public float ATT, DEF, PhysicalResistance, FireResistance, IceResistance;
-	public float ElectricResistance;
-	public float MagicResistance;
+	public float ATT, DEF;
+	public float PhysicalResistance, FireResistance, IceResistance, ElectricResistance, MagicResistance;
+	public float ComboRatio;
+
 }
