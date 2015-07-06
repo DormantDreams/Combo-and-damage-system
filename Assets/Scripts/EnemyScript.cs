@@ -18,6 +18,15 @@ public class EnemyScript : MonoBehaviour {
 	protected int minimumValue = 1;
 	[SerializeField]
 	protected int maximumValue = 50;
+
+//	private Vector2 imageSize = new Vector2(64,64);
+//	private bool hasMagicRes = true;
+//	private Vector2 magicResistancePosition = new Vector2(10,40);
+//	[SerializeField] 
+//	protected Texture2D magicResActiveIcon;
+//	[SerializeField]
+//	protected Texture2D magicResDisabledIcon;
+
 	#endregion
 
 	// Use this for initialization
@@ -36,6 +45,11 @@ public class EnemyScript : MonoBehaviour {
 		stats.DEF = (int)GUI.HorizontalSlider(new Rect(Screen.width - 2*position.x - sliderSize - boxSize.x,position.y+margin.y,sliderSize,sliderArea),stats.DEF,minimumValue,maximumValue);
 		GUI.Box(new Rect(Screen.width - position.x - boxSize.x,position.y,boxSize.x,boxSize.y),stats.DEF.ToString());
 		GUI.Box(new Rect(Screen.width - HPboxSize.x - HPmargin.x, Screen.height - HPmargin.y,HPboxSize.x,HPboxSize.y),("HP =" + stats.HP.ToString()));
+		//Buttons
+
+		//hasMagicRes = GUI.Toggle(new Rect(Screen.width - magicResistancePosition.x - imageSize.x,magicResistancePosition.y,imageSize.x,imageSize.y),stats.MagicResistance,(stats.MagicResistance>0) ? magicResActiveIcon : magicResDisabledIcon);
+
+
 	}
 
 }

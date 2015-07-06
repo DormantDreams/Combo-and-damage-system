@@ -14,6 +14,8 @@ public class WeaponScript : MonoBehaviour {
 	[SerializeField]
 	private float magicDmg;
 
+	[SerializeField]
+	private float balanceConstant = 9;
 	public float PhysicalDmg {
 		get{return physicalDmg;} 
 		set{physicalDmg=value;}
@@ -160,11 +162,11 @@ public class WeaponScript : MonoBehaviour {
 		//CalculateDamage accoding to one of the rules
 		switch(GameObject.Find("GUI").GetComponent<Toolbars>().DamageSystem){
 			case 0:{
-				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT+10) / (enemy.DEF+10) * PhysicalDmg);
-				TotalDamage += (int) ((1 - enemy.FireResistance) * (owner.ATT / enemy.DEF) * FireDmg);
-				TotalDamage += (int) ((1 - enemy.IceResistance) * (owner.ATT / enemy.DEF) * IceDmg);
-				TotalDamage += (int) ((1 - enemy.ElectricResistance) * owner.ATT / enemy.DEF * ElectricDmg);
-				TotalDamage += (int) ((1 - enemy.MagicResistance) * owner.ATT / enemy.DEF * MagicDmg);
+				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT+balanceConstant) / (enemy.DEF+balanceConstant) * PhysicalDmg);
+				TotalDamage += (int) ((1 - enemy.FireResistance) * FireDmg);
+				TotalDamage += (int) ((1 - enemy.IceResistance) * IceDmg);
+				TotalDamage += (int) ((1 - enemy.ElectricResistance) * ElectricDmg);
+				TotalDamage += (int) ((1 - enemy.MagicResistance) * MagicDmg);
 				break;	
 			}
 			case 1:{
@@ -174,14 +176,6 @@ public class WeaponScript : MonoBehaviour {
 				TotalDamage += (int)((1 - (enemy.DEF + enemy.ElectricResistance - owner.ATT)/100) * ElectricDmg);
 				TotalDamage += (int)((1 - (enemy.DEF + enemy.MagicResistance - owner.ATT)/100) * MagicDmg);
 				break;
-			}
-			case 2:{
-				TotalDamage += (int)((1 - enemy.PhysicalResistance) * owner.ATT / enemy.DEF * PhysicalDmg);
-				TotalDamage += (int)((1 - enemy.FireResistance) *  FireDmg);
-				TotalDamage += (int)((1 - enemy.IceResistance) * IceDmg);
-				TotalDamage += (int)((1 - enemy.ElectricResistance) *  ElectricDmg);
-				TotalDamage += (int)((1 - enemy.MagicResistance) * MagicDmg);
-				break;	
 			}
 		}
 		return TotalDamage;
