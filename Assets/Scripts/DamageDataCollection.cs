@@ -1,42 +1,35 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-public class DamageDataCollection : IEnumerable<DamageData>
+public class DamageDataCollection : KeyedCollection<DamageType, DamageData>, IEnumerable<DamageData>
 {
-    private List<DamageData> _data = new List<DamageData>();
-    
     public DamageDataCollection(){
-        _data.Add(new DamageData(DamageType.Physical, 30));
+        this.Add(new DamageData(DamageType.Physical, 30));
     }
     
-    public float this[DamageType damageType]{
-        get 
+    public new float this[DamageType damageType]
+    {
+        get
         {
-            var val = _data.Single(dmg => dmg.Type == damageType);
-            return (val!=null) ? val.Value : 0;
+            return this.Contains(damageType) ? base[damageType].Value : 0;
         }
-        set 
+        set
         {
-            if(value == 0)
-                _data.RemoveAll(dmg => dmg.Type == damageType);
-            else if (_data.Any(dmg => dmg.Type == damageType))
-                _data.Single(dmg => dmg.Type == damageType).Value = value;
+            if (value == 0)
+                this.Remove(damageType);
+            else if (Contains(damageType))
+                base[damageType].Value = value;
             else
-                _data.Add(new DamageData(damageType, value));
+                this.Add(new DamageData(damageType, value));
         }
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
+    protected override DamageType GetKeyForItem(DamageData item)
     {
-        throw new NotImplementedException();
-        return GetEnumerator();
-    }
-
-    public IEnumerator<DamageData> GetEnumerator()
-    {
-        return _data.GetEnumerator();
+        return item.Type;
     }
 }
