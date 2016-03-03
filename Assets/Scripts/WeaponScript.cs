@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class WeaponScript : MonoBehaviour {
 
@@ -16,27 +18,8 @@ public class WeaponScript : MonoBehaviour {
 
 	[SerializeField]
 	private float balanceConstant = 9;
-	public float PhysicalDmg {
-		get{return physicalDmg;} 
-		set{physicalDmg=value;}
-	}
-	public float FireDmg {
-		get{return (dealsFireDmg) ? fireDmg : 0;}
-		set{fireDmg = value;}
-	}
-	public float IceDmg {
-		get{return (dealsIceDmg) ? iceDmg : 0;}
-		set{iceDmg = value;}
-	}
-	public float ElectricDmg {
-		get{return (dealsElectricDmg) ? electricDmg : 0;}
-		set{electricDmg = value;}
-	}
-	public float MagicDmg {
-		get{return (dealsMagicDmg) ? magicDmg : 0;}
-		set{magicDmg = value;}
-	}
-
+	public DamageDataCollection Damage = new DamageDataCollection();
+    
 	#region GUI Area
 		
 	#region Common
@@ -112,25 +95,7 @@ public class WeaponScript : MonoBehaviour {
 	[SerializeField]
 	private Texture2D magicDisabledIcon;
 	#endregion
-	void OnGUI(){
-		//Attack Slider
-		GUI.Label(new Rect(dmgPosition.x,dmgPosition.y,boxSize.x,boxSize.y),dmgSliderText);
-		PhysicalDmg = (int)GUI.HorizontalSlider(new Rect(dmgPosition.x+boxSize.x,dmgPosition.y+dmgMargin.y,sliderSize,sliderArea),PhysicalDmg,dmgMinimumValue,dmgMaximumValue);
-		GUI.Box(new Rect(dmgPosition.x+boxSize.x+dmgMargin.x+sliderSize,dmgPosition.y,boxSize.x,boxSize.y),PhysicalDmg.ToString());
-		
-		//Fire Button
-		dealsFireDmg = GUI.Toggle(new Rect(firePosition.x,firePosition.y,imageSize.x,imageSize.y),dealsFireDmg,
-		                          dealsFireDmg ? fireActiveIcon : fireDisabledIcon);
-		//Ice Button
-		dealsIceDmg = GUI.Toggle(new Rect(icePosition.x,icePosition.y,imageSize.x,imageSize.y),dealsIceDmg,
-		                         dealsIceDmg ? iceActiveIcon : iceDisabledIcon);
-		//Electric Button
-		dealsElectricDmg = GUI.Toggle(new Rect(electricPosition.x,electricPosition.y,imageSize.x,imageSize.y),dealsElectricDmg,
-		                              dealsElectricDmg ? electricActiveIcon : electricDisabledIcon);
-		//Maigc Button
-		dealsMagicDmg = GUI.Toggle(new Rect(magicPosition.x,magicPosition.y,imageSize.x,imageSize.y),dealsMagicDmg,
-		                           dealsMagicDmg ? magicActiveIcon : magicDisabledIcon);
-	}
+	
 
 	#endregion
 
@@ -157,27 +122,15 @@ public class WeaponScript : MonoBehaviour {
 		}
 	}
 
-	private int CalculateDamage(BasicStatistics enemy,BasicStatistics owner){
+	private int CalculateDamage(BasicStatistics enemy, BasicStatistics owner){
 		int TotalDamage = 0;
 		//CalculateDamage accoding to one of the rules
-		switch(GameObject.Find("GUI").GetComponent<Toolbars>().DamageSystem){
-			case 0:{
-				TotalDamage += (int) ((1 - enemy.PhysicalResistance) * (owner.ATT+balanceConstant) / (enemy.DEF+balanceConstant) * PhysicalDmg);
-				TotalDamage += (int) ((1 - enemy.FireResistance) * FireDmg);
-				TotalDamage += (int) ((1 - enemy.IceResistance) * IceDmg);
-				TotalDamage += (int) ((1 - enemy.ElectricResistance) * ElectricDmg);
-				TotalDamage += (int) ((1 - enemy.MagicResistance) * MagicDmg);
-				break;	
-			}
-			case 1:{
-				TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance - owner.ATT)/100) * PhysicalDmg);
-				TotalDamage += (int)((1 - (enemy.DEF + enemy.FireResistance - owner.ATT)/100) * FireDmg);
-				TotalDamage += (int)((1 - (enemy.DEF + enemy.IceResistance - owner.ATT)/100) * IceDmg);
-				TotalDamage += (int)((1 - (enemy.DEF + enemy.ElectricResistance - owner.ATT)/100) * ElectricDmg);
-				TotalDamage += (int)((1 - (enemy.DEF + enemy.MagicResistance - owner.ATT)/100) * MagicDmg);
-				break;
-			}
-		}
+        foreach (var damage in this.Damage)
+        {
+            TotalDamage += (int) ((1- enemy.DamageResistance[damage.Type]) * (owner.ATT+balanceConstant) / (enemy.DEF+balanceConstant) * damage.Value);
+            //TotalDamage += (int)((1 - (enemy.DEF + enemy.PhysicalResistance - owner.ATT)/100) * PhysicalDmg);
+        }
+        
 		return TotalDamage;
 	}
 

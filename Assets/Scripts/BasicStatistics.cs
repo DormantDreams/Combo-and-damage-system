@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 [SerializeField]
 public class BasicStatistics : MonoBehaviour{
 	[SerializeField]
@@ -15,11 +17,11 @@ public class BasicStatistics : MonoBehaviour{
 				else
 					GetComponent<Animator>().SetTrigger("RecievingDamage");
 			}
-			hp=value; 
+			hp = value; 
 		}
 	}
 	public float ATT, DEF;
-	public float PhysicalResistance, FireResistance, IceResistance, ElectricResistance, MagicResistance;
+	public DamageDataCollection DamageResistance = new DamageDataCollection();
 	public float ComboRatio;
 
 }
