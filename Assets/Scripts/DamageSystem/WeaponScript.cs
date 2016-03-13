@@ -7,7 +7,7 @@ public class WeaponScript : MonoBehaviour {
 
 	[SerializeField]
 	private float balanceConstant = 9;
-	public DamageDataCollection Damage = new DamageDataCollection();
+	public DamageDataCollection Damage;
     
 	// Use this for initialization
 	void Start () {

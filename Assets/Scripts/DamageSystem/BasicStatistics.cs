@@ -1,10 +1,23 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[SerializeField]
+[Serializable]
 public class BasicStatistics : MonoBehaviour{
-	[SerializeField]
+
+    [SerializeField]
+    private float maxHp;
+    public float MaxHP
+    {
+        get { return maxHp; }
+        set
+        {
+            maxHp = value;
+        }
+    }
+    
+    [SerializeField]
 	private float hp;
 	public float HP {
 		get{ return hp; } 
@@ -21,7 +34,7 @@ public class BasicStatistics : MonoBehaviour{
 		}
 	}
 	public float ATT, DEF;
-	public DamageDataCollection DamageResistance = new DamageDataCollection();
+    public DamageDataCollection DamageResistance;
 	public float ComboRatio;
 
 }

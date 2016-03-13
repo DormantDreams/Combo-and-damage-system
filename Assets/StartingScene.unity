@@ -558,31 +558,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2aef89cab485fe43968388e76bde861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicalDmg: 30
-  fireDmg: 5
-  iceDmg: 10
-  electricDmg: 10
-  magicDmg: 60
   balanceConstant: 9
   Damage:
-  - {fileID: 11437164, guid: 83d0825c1cd435a43bc1693da6f4b642, type: 2}
-  dmgSliderText: DMG
-  dmgPosition: {x: 10, y: 40}
-  dmgMinimumValue: 1
-  dmgMaximumValue: 300
-  dealsFireDmg: 0
-  fireActiveIcon: {fileID: 2800000, guid: b4e98f6a6ee24c04ea0b008eade397f5, type: 3}
-  fireDisabledIcon: {fileID: 2800000, guid: 834a59455c280bf4097794ba9a2d5e22, type: 3}
-  dealsIceDmg: 0
-  iceActiveIcon: {fileID: 2800000, guid: 024fa38bd20e624419d4be922bb078b1, type: 3}
-  iceDisabledIcon: {fileID: 2800000, guid: 952dd0a8358c82649b2b5e681936adaf, type: 3}
-  dealsElectricDmg: 0
-  electricActiveIcon: {fileID: 2800000, guid: 7c39d586aee0b694e92920483f9e3867, type: 3}
-  electricDisabledIcon: {fileID: 2800000, guid: fd357981f9d991b4e94ce41c03409cd0,
-    type: 3}
-  dealsMagicDmg: 0
-  magicActiveIcon: {fileID: 2800000, guid: c3303938c05587e479e55b8c039d9d15, type: 3}
-  magicDisabledIcon: {fileID: 2800000, guid: bb479724569ad0d4e977d8444d6b7ae5, type: 3}
+    data:
+    - Value: 30
+      Type: 0
+    DefaultValue: 0
 --- !u!1 &754630735
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +597,7 @@ Transform:
   - {fileID: 1355735735}
   - {fileID: 385501134}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!95 &754630737
 Animator:
   serializedVersion: 3
@@ -687,10 +668,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cfd67bb1a7fa334c8d0acc054f35df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2050
+  maxHp: 2050
+  hp: 2000
   ATT: 1
   DEF: 0
-  DamageResistance: []
+  DamageResistance:
+    data:
+    - Value: 0
+      Type: 0
+    - Value: 0
+      Type: 0
+    - Value: 0
+      Type: 0
+    - Value: 0
+      Type: 0
+    DefaultValue: 0
   ComboRatio: 1.5
 --- !u!1 &789344898
 GameObject:
@@ -1435,17 +1427,25 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.Data.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.data.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .150000006
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalPosition.z
-      value: .899999976
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1453,7 +1453,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.707106829
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalRotation.z
@@ -1461,11 +1461,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .707106829
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
       propertyPath: MagicResistance
       value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: maxHp
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.Data.Array.data[0].Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.Data.Array.data[1].Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.Data.Array.data[1].Value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
+      propertyPath: DamageResistance.data.Array.data[0].Value
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e1dd9070abe75a4c8b34fdc892b99a1, type: 2}
